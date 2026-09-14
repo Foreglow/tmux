@@ -4,6 +4,8 @@ A beautiful tmux theme based on the Foreglow color palette.
 
 ## Installation
 
+The default variant is **Foreglow** (dark). See [Choosing a variant](#choosing-a-variant) below to use Afterglow, Alpenglow, or Airglow instead.
+
 ### Option 1: Tmux Plugin Manager (TPM)
 
 Add this to your `.tmux.conf`:
@@ -29,7 +31,7 @@ git clone https://github.com/foreglow/tmux ~/foreglow-tmux
 Add this to your `.tmux.conf`:
 
 ```bash
-run ~/foreglow-tmux/foreglow.tmux
+run-shell ~/foreglow-tmux/foreglow.tmux
 ```
 
 Then reload tmux:
@@ -37,6 +39,32 @@ Then reload tmux:
 ```bash
 tmux source ~/.tmux.conf
 ```
+
+> The `.tmux` files are executable shell scripts that apply the theme via `tmux set-option`, so they must be run with `run`/`run-shell` (not `source`/`source-file`).
+
+### Choosing a variant
+
+Each variant is its own file: `foreglow.tmux` (dark, default), `afterglow.tmux` (light), `alpenglow.tmux` (rubescent), `airglow.tmux` (auroral).
+
+- **Manual installation**: swap the filename in the `run-shell` line above, e.g. `run-shell ~/foreglow-tmux/afterglow.tmux`.
+- **TPM installation**: TPM runs every `.tmux` file in the plugin, and `foreglow.tmux` always applies last, so TPM alone always gives you the dark default. To use another variant with TPM, source it directly from TPM's plugin directory in a line placed *after* TPM's own initializer line (the `run '~/.tmux/plugins/tpm/tpm'` line, normally at the very bottom of `.tmux.conf`) so it overrides the default that TPM just applied:
+
+  ```bash
+  set -g @plugin 'foreglow/tmux'
+
+  run '~/.tmux/plugins/tpm/tpm'          # keep this at the bottom, as usual
+  run-shell '~/.tmux/plugins/tmux/afterglow.tmux'   # then override with your variant
+  ```
+
+### Switching variants on the fly
+
+`tmux-set` applies a variant to your current session immediately, no config edit or reload needed. Run it from any pane inside tmux:
+
+```bash
+./tmux-set afterglow      # or: ./tmux-set afterglow.tmux
+```
+
+It accepts any of `foreglow`, `afterglow`, `alpenglow`, `airglow` (with or without the `.tmux` suffix), and errors out with the list of valid names if you pass something else. Run it with no arguments to just see that list.
 
 ## Usage
 

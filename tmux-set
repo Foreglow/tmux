@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# Apply a Foreglow tmux theme variant to the current tmux session.
+#
+# Usage:
+#   ./tmux-set <variant>
+#
+# <variant> may be given with or without the .tmux suffix, e.g.
+#   ./tmux-set afterglow
+#   ./tmux-set afterglow.tmux
+
+set -euo pipefail
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+list_variants() {
+    for f in "$DIR"/*.tmux; do
+        basename "$f" .tmux
+    done
+}
+
+usage() {
+    echo "Usage: $(basename "$0") <variant>"
+    echo
+    echo "Available variants:"
+    list_variants | sed 's/^/  /'
+}
+
+if [ $# -ne 1 ]; then
+    usage >&2
+    exit 1
+fi
+
+name="${1%.tmux}"
+theme_file="$DIR/$name.tmux"
+
+if [ ! -f "$theme_file" ]; then
+    echo "error: no such theme '$1'" >&2
+    echo >&2
+    usage >&2
+    exit 1
+fi
+
+if [ -z "${TMUX:-}" ]; then
+    echo "error: not inside a tmux session" >&2
+    exit 1
+fi
+
+"$theme_file"
+tmux display-message "Foreglow: applied '$name' theme"
