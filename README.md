@@ -1,6 +1,17 @@
-# Foreglow Tmux Theme
+<p align="center"><img width="320" alt="foreglow-logo" src="https://github.com/user-attachments/assets/5b0f629b-9800-4c97-b23b-fa3f22681ea4" /></p>
 
-A beautiful tmux theme based on the Foreglow color palette.
+<h3 align="center">Foreglow Theme for <a href="https://tmux.app/">Tmux</a></h3>
+
+<p align="center">
+  <a href="https://github.com/Foreglow/tmux/stargazers"><img src="https://img.shields.io/github/stars/Foreglow/tmux?style=for-the-badge&labelColor=313244&color=CB81E4" alt="Stars" /></a>
+  <a href="https://github.com/Foreglow/tmux/issues"><img src="https://img.shields.io/github/issues/Foreglow/tmux?style=for-the-badge&labelColor=313244&color=8930A6" alt="Issues" /></a>
+  <a href="https://github.com/Foreglow/tmux/graphs/contributors"><img src="https://img.shields.io/github/contributors/Foreglow/tmux?style=for-the-badge&labelColor=313244&color=FF6B8A" alt="Contributors" /></a>
+  <a href="https://github.com/Foreglow/tmux/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Foreglow/tmux?style=for-the-badge&labelColor=313244&color=2EE8C8" alt="License" /></a>
+</p>
+
+<p align="center"><img width="820" alt="tmux" src="https://github.com/user-attachments/assets/cfe25c6b-9b4d-4f6d-961f-47efde6698db" /></p>
+
+A tmux theme based on the Foreglow color palette.
 
 ## Installation
 
